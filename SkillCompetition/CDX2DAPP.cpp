@@ -9,6 +9,16 @@ CDX2DAPP::CDX2DAPP()
 
 	m_sCls = L"기능 경기대회 준비 프로젝트";
 
+	m_hInst = NULL;
+	m_hWnd = NULL;
+	m_dWinStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE;
+	m_dScnX = 768;
+	m_dScnY = 600;
+
+	m_bShowCursor = TRUE;
+
+	m_fps = 0;
+
 
 }
 
