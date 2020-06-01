@@ -48,12 +48,53 @@ INT CDX2DAPP::Create(HINSTANCE hInst)
 	RECT rc;
 
 	SetRect(&rc, 0, 0, m_dScnX, m_dScnY);
+	AdjustWindowRect(&rc, m_dWinStyle, FALSE);
+
+	int iScnSysW = ::GetSystemMetrics(SM_CXSCREEN);
+	int iScnSysH = ::GetSystemMetrics(SM_CYSCREEN);
+
+	m_hWnd = CreateWindow(m_sCls
+		, m_sCls
+		, m_dWinStyle
+		, (iScnSysW - (rc.right - rc.left)) / 2
+		, (iScnSysH - (rc.bottom - rc.top)) / 2
+		, m_dScnX
+		, m_dScnY
+		, NULL
+		, NULL
+		, m_hInst
+		, NULL);
+	GetWindowRect(m_hWnd, &m_rcWin);
+
+
+	ShowWindow(m_hWnd, SW_SHOW);
+	UpdateWindow(m_hWnd);
+
+	Init();
 
 	return 0;
 }
 
 INT CDX2DAPP::Run()
 {
+	MSG msg;
+	memset(&msg, 0, sizeof(msg));
+
+	while (msg.message != WM_QUIT)
+	{
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			RenderLoop();
+		}
+
+	}
+
+	UnregisterClass(m_sCls, m_hInst);
 	return 0;
 }
 
@@ -63,6 +104,30 @@ void CDX2DAPP::CleanUp()
 
 INT CDX2DAPP::RenderLoop()
 {
+	static DWORD dlastTime = timeGetTime();
+	static DWORD framecount = 0;
+	static DWORD TotElapsed = 0;
+
+	DWORD dCurTime = timeGetTime();
+	DWORD elapsed = dCurTime - dlastTime;
+	TotElapsed += elapsed;
+	framecount++;
+	if (TotElapsed >= 1000)
+	{
+		m_fps = framecount;
+		framecount = 0;
+		TotElapsed -= 1000;
+	}
+	dlastTime = dCurTime;
+
+	HRESULT res = FrameMove(elapsed);
+
+	if (res != S_OK)
+		return -1;
+	res = Render();
+	if (res != S_OK)
+		return -1;
+
 	return 0;
 }
 
@@ -81,12 +146,38 @@ INT CDX2DAPP::FrameMove(DWORD elpased)
 	return 0;
 }
 
-LRESULT CDX2DAPP::MsgProc(HWND, UINT, WPARAM, LPARAM)
+LRESULT CDX2DAPP::MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	return LRESULT();
+	switch (msg)
+	{
+	case WM_PAINT:
+	{
+		break;
+	}
+	case WM_KEYDOWN:
+	{
+		switch (wParam)
+		{
+		case VK_ESCAPE:
+		{
+			SendMessage(hWnd, WM_DESTROY, 0, 0);
+			break;
+		}
+		}
+		return 0;
+	}
+	case WM_DESTROY:
+	{
+		CleanUp();
+		PostQuitMessage(0);
+		return 0;
+	}
+	}
+	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 
-LRESULT __stdcall CDX2DAPP::WndProc(HWND, UINT, WPARAM, LPARAM)
+LRESULT CDX2DAPP::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	return LRESULT();
+	return g_pDX2DApp->MsgProc(hWnd, msg, wParam, lParam);
+	
 }

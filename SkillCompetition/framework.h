@@ -13,6 +13,17 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <time.h>
+#include <mmsystem.h>
+
+#include <d2d1.h>
+#include <dwrite.h>
+#include <wincodec.h>
+
+#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "windowscodecs.lib")
+#pragma comment(lib, "dwrite.lib")
+#pragma comment(lib, "winmm.lib")
 
 #include "SkillCompetition.h"
 #include "CDX2DAPP.h"
