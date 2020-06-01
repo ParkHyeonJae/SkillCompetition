@@ -27,3 +27,4 @@
 
 #include "SkillCompetition.h"
 #include "CDX2DAPP.h"
+#include "CGame.h"
