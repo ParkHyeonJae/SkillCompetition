@@ -1,2 +1,7 @@
-﻿  CGraphics.cpp
+﻿  CDX2DAPP.cpp
+  CGame.cpp
+  CGraphics.cpp
+  SkillCompetition.cpp
+  코드를 생성하고 있습니다...
+  LINK : C:\Users\md101\source\repos\SkillCompetition\Debug\SkillCompetition.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
   SkillCompetition.vcxproj -> C:\Users\md101\source\repos\SkillCompetition\Debug\SkillCompetition.exe
