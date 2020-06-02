@@ -25,7 +25,7 @@
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "winmm.lib")
 
+#include "CGraphics.h"
 #include "SkillCompetition.h"
 #include "CDX2DAPP.h"
 #include "CGame.h"
-#include "CGraphics.h"

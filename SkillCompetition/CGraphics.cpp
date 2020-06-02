@@ -30,7 +30,7 @@ INT CGraphics::Init(HWND hWnd, RECT rcWin)
 	res = m_renderTarget->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::White), &m_Whitebrush);
 
 
-	res = DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory), reinterpret_cast<IUnknown**>(&m_renderTarget));
+	res = DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory), reinterpret_cast<IUnknown**>(&m_writeFactory));
 
 	m_writeFactory->CreateTextFormat(
 		L"Gabiola",
@@ -48,16 +48,37 @@ INT CGraphics::Init(HWND hWnd, RECT rcWin)
 
 void CGraphics::CleanUp()
 {
+	if (m_format)
+		m_format->Release();
+	if (m_Redbrush)
+		m_Redbrush->Release();
+	if (m_Whitebrush)
+		m_Whitebrush->Release();
+	if (m_Blackbrush)
+		m_Blackbrush->Release();
+	if (m_renderTarget)
+		m_renderTarget->Release();
+	if (m_writeFactory)
+		m_writeFactory->Release();
+	if (m_factory)
+		m_factory->Release();
 }
 
 void CGraphics::CleanScreen(float r, float g, float b)
 {
+	m_renderTarget->Clear(D2D1::ColorF(r, g, b));
+
 }
 
 void CGraphics::DrawCircle(float x, float y, float radius, float r, float g, float b, float a)
 {
+	m_Redbrush->SetColor(D2D1::ColorF(r, g, b, a));
+	m_renderTarget->DrawEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), radius, radius),
+		m_Redbrush, 3.0f);
+
 }
 
 void CGraphics::DrawTextOut(LPCWSTR text, D2D1_POINT_2F Pos)
 {
+	m_renderTarget->DrawTextW(text, lstrlen(text), m_format, D2D1::RectF(Pos.x, Pos.y, 800, 600), m_Whitebrush);
 }

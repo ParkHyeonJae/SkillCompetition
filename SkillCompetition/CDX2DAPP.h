@@ -14,6 +14,8 @@ protected:
 
 	DWORD m_fps;
 
+protected:
+	CGraphics* m_Gfx;
 public:
 	CDX2DAPP();
 	virtual ~CDX2DAPP();
@@ -28,6 +30,8 @@ public:
 	virtual INT Render();
 	virtual INT FrameMove(DWORD elpased);
 	
+	virtual INT Control();
+
 	LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);
 	static LRESULT WINAPI WndProc(HWND, UINT, WPARAM, LPARAM);
 	

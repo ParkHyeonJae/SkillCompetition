@@ -66,6 +66,8 @@ INT CDX2DAPP::Create(HINSTANCE hInst)
 		, NULL);
 	GetWindowRect(m_hWnd, &m_rcWin);
 
+	m_Gfx = new CGraphics();
+	m_Gfx->Init(m_hWnd, m_rcWin);
 
 	ShowWindow(m_hWnd, SW_SHOW);
 	UpdateWindow(m_hWnd);
@@ -100,6 +102,8 @@ INT CDX2DAPP::Run()
 
 void CDX2DAPP::CleanUp()
 {
+
+	delete m_Gfx;
 }
 
 INT CDX2DAPP::RenderLoop()
@@ -143,6 +147,12 @@ INT CDX2DAPP::Render()
 
 INT CDX2DAPP::FrameMove(DWORD elpased)
 {
+	return 0;
+}
+
+INT CDX2DAPP::Control()
+{
+
 	return 0;
 }
 

@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CDX2DAPP.h" />
+    <ClInclude Include="CGame.h" />
+    <ClInclude Include="CGraphics.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SkillCompetition.h" />
@@ -147,6 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CDX2DAPP.cpp" />
+    <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CGraphics.cpp" />
     <ClCompile Include="SkillCompetition.cpp" />
   </ItemGroup>
   <ItemGroup>

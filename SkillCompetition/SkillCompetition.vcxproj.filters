@@ -30,12 +30,24 @@
     <ClInclude Include="CDX2DAPP.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CGame.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CGraphics.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SkillCompetition.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CDX2DAPP.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CGraphics.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
