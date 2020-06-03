@@ -141,8 +141,15 @@
   <ItemGroup>
     <ClInclude Include="CDX2DAPP.h" />
     <ClInclude Include="CGame.h" />
+    <ClInclude Include="CGameManager.h" />
+    <ClInclude Include="CGameObjectManager.h" />
     <ClInclude Include="CGraphics.h" />
+    <ClInclude Include="CInput.h" />
+    <ClInclude Include="CSprite.h" />
+    <ClInclude Include="CSpriteManager.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SkillCompetition.h" />
     <ClInclude Include="targetver.h" />
@@ -150,7 +157,13 @@
   <ItemGroup>
     <ClCompile Include="CDX2DAPP.cpp" />
     <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CGameManager.cpp" />
+    <ClCompile Include="CGameObjectManager.cpp" />
     <ClCompile Include="CGraphics.cpp" />
+    <ClCompile Include="CInput.cpp" />
+    <ClCompile Include="CSprite.cpp" />
+    <ClCompile Include="CSpriteManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="SkillCompetition.cpp" />
   </ItemGroup>
   <ItemGroup>

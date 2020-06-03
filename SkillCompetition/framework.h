@@ -9,12 +9,17 @@
 // Windows 헤더 파일
 #include <windows.h>
 // C 런타임 헤더 파일입니다.
+#include <atlstr.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
 #include <time.h>
 #include <mmsystem.h>
+
+#include <vector>
+#include <map>
 
 #include <d2d1.h>
 #include <dwrite.h>
@@ -25,7 +30,21 @@
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "winmm.lib")
 
+
 #include "CGraphics.h"
+#include "CSprite.h"
+#include "CInput.h"
 #include "SkillCompetition.h"
+#include "CSpriteManager.h"
+#include "IGameObject.h"
+#include "GameObject.h"
+#include "CGameObjectManager.h"
+#include "CGameManager.h"
 #include "CDX2DAPP.h"
 #include "CGame.h"
+
+#ifdef UNICODE
+#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
+#else
+#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
+#endif

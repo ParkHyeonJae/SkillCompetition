@@ -102,7 +102,7 @@ INT CDX2DAPP::Run()
 
 void CDX2DAPP::CleanUp()
 {
-
+	delete m_Input;
 	delete m_Gfx;
 }
 
@@ -137,6 +137,8 @@ INT CDX2DAPP::RenderLoop()
 
 INT CDX2DAPP::Init()
 {
+	m_Input = new CInput();
+	m_Input->Create(m_hWnd);
 	return 0;
 }
 
@@ -147,10 +149,12 @@ INT CDX2DAPP::Render()
 
 INT CDX2DAPP::FrameMove(DWORD elpased)
 {
+	if (m_Input) m_Input->FrameMove();
+	Control(m_Input);
 	return 0;
 }
 
-INT CDX2DAPP::Control()
+INT CDX2DAPP::Control(CInput* Input)
 {
 
 	return 0;

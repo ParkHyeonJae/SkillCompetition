@@ -12,11 +12,14 @@ CGame::~CGame()
 INT CGame::Init()
 {
 	CDX2DAPP::Init();
+
+
 	return 0;
 }
 
 INT CGame::Render()
 {
+	
 	return 0;
 }
 
@@ -31,8 +34,10 @@ void CGame::Destroy()
 {
 }
 
-INT CGame::Control()
+INT CGame::Control(CInput* Input)
 {
+
+
 	return 0;
 }
 
