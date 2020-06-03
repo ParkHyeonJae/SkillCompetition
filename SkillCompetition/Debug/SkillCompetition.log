@@ -1,13 +1,5 @@
 ﻿  CDX2DAPP.cpp
   CGame.cpp
-  CGameManager.cpp
-  CGameObjectManager.cpp
-  CGraphics.cpp
-  CInput.cpp
-C:\Users\md101\source\repos\SkillCompetition\SkillCompetition\CInput.cpp(175,2): warning C4060: switch문에 'case' 또는 'default' 레이블이 없습니다.
-  CSprite.cpp
-  CSpriteManager.cpp
-  GameObject.cpp
-  SkillCompetition.cpp
+C:\Users\md101\source\repos\SkillCompetition\SkillCompetition\CGame.cpp(55,35): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다...
   SkillCompetition.vcxproj -> C:\Users\md101\source\repos\SkillCompetition\Debug\SkillCompetition.exe

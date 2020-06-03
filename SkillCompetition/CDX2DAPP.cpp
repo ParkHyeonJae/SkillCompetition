@@ -7,7 +7,7 @@ CDX2DAPP::CDX2DAPP()
 {
 	g_pDX2DApp = this;
 
-	m_sCls = L"기능 경기대회 준비 프로젝트";
+	m_sCls = L"Direct 2D Project";
 
 	m_hInst = NULL;
 	m_hWnd = NULL;

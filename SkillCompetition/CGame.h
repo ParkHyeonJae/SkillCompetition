@@ -1,6 +1,10 @@
 #pragma once
 class CGame : public CDX2DAPP
 {
+	CSprite* m_sprite;
+	D2D1_POINT_2F m_PlayerPos;
+	D2D1_POINT_2F m_PlayerScale;
+	float m_rot;
 public:
 	CGame();
 	~CGame();

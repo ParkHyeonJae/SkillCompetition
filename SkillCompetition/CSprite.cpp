@@ -53,6 +53,8 @@ CSprite::CSprite(LPCWSTR filename, CGraphics* gfx, int sprWidth, int sprHeight)
 		m_sprWidth = sprWidth;
 		m_sprHeight = sprHeight;
 	}
+	m_sprSize.width = m_sprWidth;
+	m_sprSize.height = m_sprHeight;
 
 	if (wicFactory)
 		wicFactory->Release();
@@ -75,6 +77,29 @@ void CSprite::Draw()
 void CSprite::Draw(D2D1_POINT_2F Pos)
 {
 	m_gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
+
+
+	m_gfx->GetRenderTarget()->DrawBitmap(
+		m_bmp,
+		D2D1::RectF(Pos.x, Pos.y, Pos.x + m_bmp->GetSize().width, Pos.y + m_bmp->GetSize().height),
+		1.0f,
+		D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
+		D2D1::RectF(0.0f, 0.0f, m_bmp->GetSize().width, m_bmp->GetSize().height));
+}
+
+void CSprite::Draw(D2D1_POINT_2F Pos, D2D1_POINT_2F *center, D2D1_POINT_2F Scale, float angle)
+{
+	m_gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
+
+	//D2D1_MATRIX_3X2_F Translate = D2D1::Matrix3x2F::Translation(center.x, center.y);
+	D2D1_MATRIX_3X2_F Mat_Rotation;
+	D2D1MakeRotateMatrix(angle, *center, &Mat_Rotation);
+	D2D1_MATRIX_3X2_F Mat_Scale = D2D1::Matrix3x2F::Scale(Scale.x,Scale.y, *center);
+	
+
+	D2D1_MATRIX_3X2_F RotnScaleMatrix = Mat_Scale * Mat_Rotation;
+	m_gfx->GetRenderTarget()->SetTransform(RotnScaleMatrix);
+
 	m_gfx->GetRenderTarget()->DrawBitmap(
 		m_bmp,
 		D2D1::RectF(Pos.x, Pos.y, Pos.x + m_bmp->GetSize().width, Pos.y + m_bmp->GetSize().height),
