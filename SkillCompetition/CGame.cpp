@@ -13,7 +13,7 @@ INT CGame::Init()
 {
 	CDX2DAPP::Init();
 
-	m_sprite = new CSprite(L"./Images/rocket.png", m_Gfx);
+	m_sprite = new CSprite(L"../Images/rocket.png", m_Gfx);
 	m_PlayerPos = { (float)(m_dScnX / 2),(float)(m_dScnY / 2) };
 	m_rot = 0.0f;
 	m_PlayerScale = { 1.0f,1.0f };
@@ -29,6 +29,10 @@ INT CGame::Render()
 	center.x = m_PlayerPos.x + (m_sprite->GetSize().width / 2);
 	center.y = m_PlayerPos.y + (m_sprite->GetSize().height / 2);
 	m_sprite->Draw(m_PlayerPos, &center, D2D1::Point2F(m_PlayerScale.x, m_PlayerScale.y), m_rot);
+	m_Gfx->DrawTextOut(L"20106 박현재", D2D1::Point2F(m_PlayerPos.x - 50, m_PlayerPos.y - 30));
+
+	m_Gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
+	m_Gfx->DrawTextOut(L"이동: 방향키\n 회전: 마우스 방향\n 확대/축소: 마우스 좌/우 클릭", D2D1::Point2F());
 
 	m_Gfx->EndDraw();
 	return 0;
