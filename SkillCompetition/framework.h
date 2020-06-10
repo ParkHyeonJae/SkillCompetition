@@ -34,7 +34,7 @@
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "winmm.lib")
 
-
+#include "Utility.h"
 #include "CGraphics.h"
 #include "CSprite.h"
 #include "CInput.h"

@@ -69,7 +69,11 @@ void CGraphics::ClearScreen(float r, float g, float b)
 	m_renderTarget->Clear(D2D1::ColorF(r, g, b));
 
 }
-
+void CGraphics::DrawRectangle(float x1, float y1, float x2, float y2, float r, float g, float b, float a)
+{
+	m_Redbrush->SetColor(D2D1::ColorF(r, g, b, a));
+	m_renderTarget->DrawRectangle(D2D1::RectF(x1, y1, x2, y2), m_Redbrush, 3.0f);
+}
 void CGraphics::DrawCircle(float x, float y, float radius, float r, float g, float b, float a)
 {
 	m_Redbrush->SetColor(D2D1::ColorF(r, g, b, a));
