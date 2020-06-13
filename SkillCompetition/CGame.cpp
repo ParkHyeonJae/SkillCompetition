@@ -15,6 +15,12 @@ INT CGame::Init()
 
 	srand((unsigned int)time(0));
 
+	m_theta = 0.0f;
+	m_clockCenterPoint= { (float)(m_dScnX / 2),(float)(m_dScnY / 2) };
+	m_clockEndPoint = { 0,0 };
+
+
+
 	//m_sprite = new CSprite(L"../Images/rocket.png", m_Gfx);
 
 	/*m_PlayerPos = { (float)(m_dScnX / 2),(float)(m_dScnY / 2) };
@@ -44,6 +50,7 @@ INT CGame::Init()
 
 	m_bOnceGeometry[0] = TRUE;
 	m_bOnceGeometry[1] = TRUE;*/
+	
 	return 0;
 }
 
@@ -51,6 +58,12 @@ INT CGame::Render()
 {
 	m_Gfx->BeginDraw();
 	m_Gfx->ClearScreen(0.0f, 0.0f, 0.5f);
+
+	m_Gfx->DrawCircle(m_clockCenterPoint.x, m_clockCenterPoint.y, 300.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+	float xPos = cosf(m_theta) * 300;
+	float yPos = sinf(m_theta) * 300;
+	m_Gfx->DrawLine(m_clockCenterPoint.x, m_clockCenterPoint.y, m_clockCenterPoint.x + xPos, m_clockCenterPoint.y + yPos, 5, 1.0f, 1.0, 1.0f, 1.0f);
+
 
 	//m_Gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
 
@@ -85,6 +98,11 @@ INT CGame::Render()
 INT CGame::FrameMove(DWORD elpased)
 {
 	CDX2DAPP::FrameMove(elpased);
+
+	if (m_theta <= 360.0f)
+		m_theta += 0.1f;
+	else m_theta = 0.0f;
+
 
 	/*m_playerCenter.x = m_PlayerPos.x + (m_sprite->GetSize().width / 2);
 	m_playerCenter.y = m_PlayerPos.y + (m_sprite->GetSize().height / 2);
