@@ -59,7 +59,6 @@ INT CGame::Render()
 	m_Gfx->BeginDraw();
 	m_Gfx->ClearScreen(0.0f, 0.0f, 0.5f);
 
-<<<<<<< HEAD
 
 	//m_Gfx->DrawCircle((float)(m_dScnX / 2), (float)(m_dScnY / 2), 100.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -83,7 +82,6 @@ INT CGame::Render()
 	//}
 
 	
-=======
 	m_Gfx->DrawCircle(m_clockCenterPoint.x, m_clockCenterPoint.y, 300.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 	float xPos = cosf(m_theta) * 300;
 	float yPos = sinf(m_theta) * 300;
@@ -113,7 +111,6 @@ INT CGame::Render()
 
 	//}
 	//
->>>>>>> 2c4207dae397bcf0937565fe9a49e47c74648d4f
 	//m_Gfx->DrawTextOut(L"이동: 방향키\n 회전: 마우스 방향\n 확대/축소: 마우스 좌/우 클릭", D2D1::Point2F());
 
 
