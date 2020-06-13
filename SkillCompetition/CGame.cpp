@@ -31,7 +31,7 @@ INT CGame::Init()
 
 	LONG RandX1 = (LONG)(rand() % m_dScnX + 1);
 	LONG RandY1 = (LONG)(rand() % m_dScnY + 1);
-	m_rtTargetBox2 = { RandX, RandY, RandX + (LONG)(rand() % (m_dScnX - RandX) + 1), RandY + (LONG)(rand() % (m_dScnY - RandY) + 1) };
+	m_rtTargetBox2 = { RandX1, RandY1, RandX1 + (LONG)(rand() % (m_dScnX - RandX1) + 1), RandY1 + (LONG)(rand() % (m_dScnY - RandY1) + 1) };
 
 
 	m_TargetCircle = { (LONG)(rand() % m_dScnX + 1) , (LONG)(rand() % m_dScnY + 1) };

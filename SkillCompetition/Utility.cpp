@@ -19,7 +19,6 @@ BOOL IsPointInCircle(const POINT ptCircle, const int cr, const POINT pt)
 	if (l <= cr) return TRUE;
 	
 	return FALSE;
-	return 0;
 }
 
 RECT* rtIntersectRect(const RECT rt1, const RECT rt2)
