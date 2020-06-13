@@ -23,6 +23,9 @@ public:
 	void ClearScreen(float r, float g, float b);
 	void DrawCircle(float x, float y, float radius, float r, float g, float b, float a);
 	void DrawRectangle(float x1, float y1, float x2, float y2, float r, float g, float b, float a);
+	void DrawPoint(float x, float y, float size, float r, float g, float b, float a);
+	void DrawPoint(float x, float y, float r, float g, float b, float a);
+	void DrawLine(float x1, float y1, float x2, float y2, float tick, float r, float g, float b, float a);
 	void DrawTextOut(LPCWSTR text, D2D1_POINT_2F Pos);
 
 };
