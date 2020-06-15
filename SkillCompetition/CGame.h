@@ -3,9 +3,14 @@ class CGame : public CDX2DAPP
 {
 	D2D1_POINT_2F m_clockCenterPoint;
 	D2D1_POINT_2F m_clockEndPoint;
-	float m_theta;
 
+	D2D1_POINT_2F m_hour;
+	D2D1_POINT_2F m_minuate;
+	D2D1_POINT_2F m_second;
 
+	float m_hourTheta;
+	float m_minuateTheta;
+	float m_secondTheta;
 
 	//CSprite* m_sprite;
 	//D2D1_POINT_2F m_playerCenter;

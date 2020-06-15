@@ -15,11 +15,17 @@ INT CGame::Init()
 
 	srand((unsigned int)time(0));
 
-	m_theta = 0.0f;
+	m_hourTheta = 0.0f;
 	m_clockCenterPoint= { (float)(m_dScnX / 2),(float)(m_dScnY / 2) };
 	m_clockEndPoint = { 0,0 };
 
+	m_hour = { 0,0 };
+	m_minuate = { 0,0 };
+	m_second = { 0,0 };
 
+	m_hourTheta = 270;
+	m_minuateTheta = 270;
+	m_secondTheta = 270;
 
 	//m_sprite = new CSprite(L"../Images/rocket.png", m_Gfx);
 
@@ -83,10 +89,37 @@ INT CGame::Render()
 
 	
 	m_Gfx->DrawCircle(m_clockCenterPoint.x, m_clockCenterPoint.y, 300.0f, 1.0f, 1.0f, 1.0f, 1.0f);
-	float xPos = cosf(m_theta) * 300;
-	float yPos = sinf(m_theta) * 300;
-	m_Gfx->DrawLine(m_clockCenterPoint.x, m_clockCenterPoint.y, m_clockCenterPoint.x + xPos, m_clockCenterPoint.y + yPos, 5, 1.0f, 1.0, 1.0f, 1.0f);
+	float radian = PI / 180.0f;
 
+	m_hour.x = cosf(m_hourTheta * radian) * 100;
+	m_hour.y = sinf(m_hourTheta * radian) * 100;
+
+	m_minuate.x = cosf(m_minuateTheta * radian) * 200;
+	m_minuate.y = sinf(m_minuateTheta * radian) * 200;
+
+	m_second.y = sinf(m_secondTheta * radian) * 250;
+	m_second.x = cosf(m_secondTheta * radian) * 250;
+
+	m_Gfx->DrawLine(m_clockCenterPoint.x, m_clockCenterPoint.y
+		, m_clockCenterPoint.x + m_hour.x, m_clockCenterPoint.y + m_hour.y
+		, 5, 1.0f, 1.0, 1.0f, 1.0f);
+
+	m_Gfx->DrawLine(m_clockCenterPoint.x, m_clockCenterPoint.y
+		, m_clockCenterPoint.x + m_minuate.x, m_clockCenterPoint.y + m_minuate.y
+		, 5, 1.0f, 1.0, 1.0f, 1.0f);
+
+	m_Gfx->DrawLine(m_clockCenterPoint.x, m_clockCenterPoint.y
+		, m_clockCenterPoint.x + m_second.x, m_clockCenterPoint.y + m_second.y
+		, 5, 1.0f, 1.0, 1.0f, 1.0f);
+
+
+	for (int i = 0; i < 60; i++)
+	{
+		float y = sinf((i * 6) * radian) * 280;
+		float x = cosf((i * 6) * radian) * 280;
+		m_Gfx->DrawPoint(m_clockCenterPoint.x + x, m_clockCenterPoint.y + y, 1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	
 
 	//m_Gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
 
@@ -117,14 +150,63 @@ INT CGame::Render()
 	m_Gfx->EndDraw();
 	return 0;
 }
-
+int Second = 1;
+int Hour = 0;
 INT CGame::FrameMove(DWORD elpased)
 {
 	CDX2DAPP::FrameMove(elpased);
+	static DWORD OldTimer = timeGetTime();
+	DWORD timer = timeGetTime();
+	float MaxHour = 12.0f;
+	float MaxMinuate = 60.0f;
+	float MaxSecond =  60.0f;
+	if (timer - OldTimer  >= 1000)
+	{
+		//printf("%d %d\n", timer, OldTimer);
+		if (m_secondTheta + 6.0f < 360.0f) {
+			m_secondTheta += 6.0f;
+			Second++;
+		}
+		else m_secondTheta = 0.0f;
 
-	if (m_theta <= 360.0f)
-		m_theta += 0.1f;
-	else m_theta = 0.0f;
+
+		if (m_secondTheta == 270.0f)
+		{
+			m_minuateTheta += 6.0f;
+
+			if (m_minuateTheta + 6.0f == 360.0f) {
+				m_minuateTheta = 0.0f;
+			}
+
+			if (m_minuateTheta == 270.0f)
+			{
+				m_hourTheta += 30.0f;
+				++Hour;
+				printf("%d %f\n", Hour, m_hourTheta);
+				if (m_hourTheta == 360.0f) {
+					m_hourTheta = 0.0f;
+				}
+
+			}
+		}
+
+		
+		OldTimer = timer;
+	}
+
+	
+	
+
+	//if (m_hourTheta <= 360.0f)
+	//	m_hourTheta += 1.0f;
+	//else m_hourTheta = 0.0f;
+
+	//if (m_minuateTheta <= 360.0f)
+	//	m_minuateTheta += 1.0f;
+	//else m_minuateTheta = 0.0f;
+
+
+	
 
 
 	/*m_playerCenter.x = m_PlayerPos.x + (m_sprite->GetSize().width / 2);
