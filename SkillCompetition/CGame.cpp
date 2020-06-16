@@ -15,35 +15,14 @@ INT CGame::Init()
 
 	srand((unsigned int)time(0));
 
-	//m_sprite = new CSprite(L"../Images/rocket.png", m_Gfx);
+	m_circleCenter = { (float)(m_dScnX / 2),(float)(m_dScnY / 2) };
 
-	/*m_PlayerPos = { (float)(m_dScnX / 2),(float)(m_dScnY / 2) };
-	m_rot = 0.0f;
-	m_PlayerScale = { 1.0f,1.0f };
-	m_playerCenter.x = m_PlayerPos.x + (m_sprite->GetSize().width / 2);
-	m_playerCenter.y = m_PlayerPos.y + (m_sprite->GetSize().height / 2);
-	m_rtPlayerBox = { (LONG)m_playerCenter.x - 120, (LONG)m_playerCenter.y - 120, (LONG)m_playerCenter.x + 120, (LONG)m_playerCenter.y + 120 };
-	m_bIsCrash = FALSE;
-	m_bIsCircleCrash = FALSE;
+	m_secondPoint = { 0,0 };
+	m_minuatePoint = { 0,0 };
+	m_hourPoint = { 0,0 };
 
-	LONG RandX = (LONG)(rand() % m_dScnX + 1);
-	LONG RandY = (LONG)(rand() % m_dScnY + 1);
-	m_rtTargetBox = { RandX, RandY, RandX + (LONG)(rand() % (m_dScnX - RandX) + 1), RandY + (LONG)(rand() % (m_dScnY - RandY) + 1)};
+	radian = PI / 180.0f;
 
-	LONG RandX1 = (LONG)(rand() % m_dScnX + 1);
-	LONG RandY1 = (LONG)(rand() % m_dScnY + 1);
-	m_rtTargetBox2 = { RandX1, RandY1, RandX1 + (LONG)(rand() % (m_dScnX - RandX1) + 1), RandY1 + (LONG)(rand() % (m_dScnY - RandY1) + 1) };
-
-
-	m_TargetCircle = { (LONG)(rand() % m_dScnX + 1) , (LONG)(rand() % m_dScnY + 1) };
-	radius = rand() % (m_dScnX - m_dScnY);
-
-
-	m_TargetCircle2 = { (LONG)(rand() % m_dScnX + 1) , (LONG)(rand() % m_dScnY + 1) };
-	radius2 = rand() % (m_dScnX - m_dScnY);
-
-	m_bOnceGeometry[0] = TRUE;
-	m_bOnceGeometry[1] = TRUE;*/
 	return 0;
 }
 
@@ -52,31 +31,26 @@ INT CGame::Render()
 	m_Gfx->BeginDraw();
 	m_Gfx->ClearScreen(0.0f, 0.0f, 0.5f);
 
-	//m_Gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
 
-	//
+	m_Gfx->DrawCircle(m_circleCenter.x, m_circleCenter.y, 250, 1.0f, 1.0f, 1.0f, 1.0f);
 
-	//m_sprite->Draw(m_PlayerPos, &m_playerCenter, D2D1::Point2F(m_PlayerScale.x, m_PlayerScale.y), m_rot);
-	//m_Gfx->DrawTextOut(L"20106 박현재", D2D1::Point2F(m_PlayerPos.x - 50, m_PlayerPos.y - 30));
+	m_secondPoint.x = cosf(m_secondTheta * radian)  * 250.0f;
+	m_secondPoint.y = sinf(m_secondTheta * radian)  * 250.0f;
 
-	//m_Gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
-	////m_Gfx->DrawRectangle((float)m_rtPlayerBox.left, (float)m_rtPlayerBox.top, (float)m_rtPlayerBox.right, (float)m_rtPlayerBox.bottom, 1.0f, 1.0f, 1.0f, 1.0f);
-	//m_Gfx->DrawRectangle((float)m_rtTargetBox.left, (float)m_rtTargetBox.top, (float)m_rtTargetBox.right, (float)m_rtTargetBox.bottom, 1.0f, 1.0f, 1.0f, 1.0f);
-	//m_Gfx->DrawCircle((float)m_TargetCircle.x, (float)m_TargetCircle.y, radius, 1.0f, 1.0f, 1.0f, 1.0f);
+	m_minuatePoint.x = cosf(m_minuateTheta * radian) * 150.0f;
+	m_minuatePoint.y = sinf(m_minuateTheta * radian) * 150.0f;
 
-	//if (m_bOnceGeometry[0])
-	//{
-	//	m_Gfx->DrawRectangle((float)m_rtTargetBox2.left, (float)m_rtTargetBox2.top, (float)m_rtTargetBox2.right, (float)m_rtTargetBox2.bottom, 1.0f, 1.0f, 1.0f, 1.0f);
-	//	
-	//}
-	//if (m_bOnceGeometry[1])
-	//{
-	//	m_Gfx->DrawCircle((float)m_TargetCircle2.x, (float)m_TargetCircle2.y, radius2, 1.0f, 1.0f, 1.0f, 1.0f);
+	m_hourPoint.x = cosf(m_hourTheta * radian) * 100.0f;
+	m_hourPoint.y = sinf(m_hourTheta * radian) * 100.0f;
 
-	//}
-	//
-	//m_Gfx->DrawTextOut(L"이동: 방향키\n 회전: 마우스 방향\n 확대/축소: 마우스 좌/우 클릭", D2D1::Point2F());
+	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
+		m_circleCenter.x + m_secondPoint.x, m_circleCenter.y + m_secondPoint.y, 3, 1.0f, 1.0f, 1.0f, 1.0f);
 
+	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
+		m_circleCenter.x + m_minuatePoint.x, m_circleCenter.y + m_minuatePoint.y, 3, 1.0f, 1.0f, 1.0f, 1.0f);
+
+	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
+		m_circleCenter.x + m_hourPoint.x, m_circleCenter.y + m_hourPoint.y, 3, 1.0f, 1.0f, 1.0f, 1.0f);
 
 	m_Gfx->EndDraw();
 	return 0;
@@ -86,39 +60,13 @@ INT CGame::FrameMove(DWORD elpased)
 {
 	CDX2DAPP::FrameMove(elpased);
 
-	/*m_playerCenter.x = m_PlayerPos.x + (m_sprite->GetSize().width / 2);
-	m_playerCenter.y = m_PlayerPos.y + (m_sprite->GetSize().height / 2);
-	m_rtPlayerBox = { (LONG)m_playerCenter.x - 120,
-		(LONG)m_playerCenter.y - 120,
-		(LONG)m_playerCenter.x + 120,
-		(LONG)m_playerCenter.y + 120 };
-	if (IsRectInRect(m_rtTargetBox, m_rtPlayerBox)) {
-		m_bIsCrash = TRUE;
-	}
-	
-	if (m_bIsCrash) {
-		LONG RandX = (LONG)(rand() % m_dScnX);
-		LONG RandY = (LONG)(rand() % m_dScnY);
-		m_rtTargetBox = { RandX, RandY, RandX + (LONG)(rand() % (m_dScnX - RandX) + 1), RandY + (LONG)(rand() % (m_dScnY - RandY) + 1) };
-		m_bIsCrash = FALSE;
-	}
+	GetLocalTime(&st);
 
-	if (IsRectInCircle(m_TargetCircle, radius, m_rtPlayerBox)){
-		m_bIsCircleCrash = TRUE;
-	}
-	if (m_bIsCircleCrash)
-	{
-		m_TargetCircle = { (LONG)(rand() % m_dScnX + 1) , (LONG)(rand() % m_dScnY + 1) };
-		radius = rand() % (m_dScnX - m_dScnY) + 1;
-		m_bIsCircleCrash = FALSE;
-	}
 
-	if (IsRectInRect(m_rtTargetBox2, m_rtPlayerBox)) {
-		m_bOnceGeometry[0] = FALSE;
-	}
-	if (IsRectInCircle(m_TargetCircle2, radius2, m_rtPlayerBox)) {
-		m_bOnceGeometry[1] = FALSE;
-	}*/
+	m_secondTheta = ((st.wSecond * 6) - 90);
+	m_minuateTheta = ((st.wMinute * 6) - 90);
+	m_hourTheta = ((st.wHour * 30) - 90);
+
 	return 0;
 }
 
