@@ -1,3 +1,3 @@
 ﻿  CGame.cpp
-C:\Users\md101\source\repos\SkillCompetition\SkillCompetition\CGame.cpp(92,28): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\md101\source\repos\SkillCompetition\SkillCompetition\CGame.cpp(102,28): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
   SkillCompetition.vcxproj -> C:\Users\md101\source\repos\SkillCompetition\Debug\SkillCompetition.exe

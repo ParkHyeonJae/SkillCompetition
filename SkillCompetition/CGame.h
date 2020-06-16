@@ -12,6 +12,8 @@ class CGame : public CDX2DAPP
 	float m_minuateTheta;
 	float m_secondTheta;
 
+	SYSTEMTIME st;
+
 	//CSprite* m_sprite;
 	//D2D1_POINT_2F m_playerCenter;
 	//D2D1_POINT_2F m_PlayerPos;

@@ -23,9 +23,19 @@ INT CGame::Init()
 	m_minuate = { 0,0 };
 	m_second = { 0,0 };
 
-	m_hourTheta = 270;
+
+	GetLocalTime(&st);
+	printf("%d %d %d ", st.wHour, st.wMinute, st.wSecond);
+
+
+	/*m_hourTheta = 270;
 	m_minuateTheta = 270;
-	m_secondTheta = 270;
+	m_secondTheta = 270;*/
+
+	m_hourTheta = st.wHour * 30.0f - 90.0f;
+	m_minuateTheta = st.wMinute * 6.0f - 90.0f;
+	m_secondTheta = st.wSecond * 6.0f -  90.0f;
+
 
 	//m_sprite = new CSprite(L"../Images/rocket.png", m_Gfx);
 
@@ -155,6 +165,8 @@ int Hour = 0;
 INT CGame::FrameMove(DWORD elpased)
 {
 	CDX2DAPP::FrameMove(elpased);
+
+
 	static DWORD OldTimer = timeGetTime();
 	DWORD timer = timeGetTime();
 	float MaxHour = 12.0f;
