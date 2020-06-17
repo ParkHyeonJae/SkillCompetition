@@ -24,7 +24,6 @@ INT CGame::Init()
 	radian = PI / 180.0f;
 
 	m_clockspirte = new CSprite(L"../Images/clock_background.png", m_Gfx, 583, 830);
-
 	return 0;
 }
 

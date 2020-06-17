@@ -1,1 +1,26 @@
-﻿  SkillCompetition.vcxproj -> C:\Users\user\Desktop\Projects\SkillCompetition\Debug\SkillCompetition.exe
+﻿  CDX2DAPP.cpp
+  CGame.cpp
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\CGame.cpp(24,22): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\CGame.cpp(70,36): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\CGame.cpp(71,37): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\CGame.cpp(72,33): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CGameManager.cpp
+  CGameObjectManager.cpp
+  CGraphics.cpp
+  CInput.cpp
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\CInput.cpp(175,2): warning C4060: switch문에 'case' 또는 'default' 레이블이 없습니다.
+  CSprite.cpp
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\CSprite.cpp(56,20): warning C4244: '=': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\CSprite.cpp(57,21): warning C4244: '=': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CSpriteManager.cpp
+  GameObject.cpp
+  SkillCompetition.cpp
+  Utility.cpp
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\Utility.cpp(15,11): warning C4244: '초기화 중': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\Utility.cpp(16,11): warning C4244: '초기화 중': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\Utility.cpp(17,10): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\Utility.cpp(67,11): warning C4244: '초기화 중': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\Utility.cpp(68,11): warning C4244: '초기화 중': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Desktop\Projects\SkillCompetition\SkillCompetition\Utility.cpp(69,10): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  SkillCompetition.vcxproj -> C:\Users\user\Desktop\Projects\SkillCompetition\Debug\SkillCompetition.exe
