@@ -34,6 +34,7 @@
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "winmm.lib")
 
+
 #include "Utility.h"
 #include "CGraphics.h"
 #include "CSprite.h"
@@ -45,11 +46,13 @@
 #include "CGameObjectManager.h"
 #include "CGameManager.h"
 #include "CDX2DAPP.h"
+#include "Clock.h"
 #include "CGame.h"
 
-//
-//#ifdef UNICODE
-//#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
-//#else
-//#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
-//#endif
+
+
+#ifdef UNICODE
+#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
+#else
+#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
+#endif
