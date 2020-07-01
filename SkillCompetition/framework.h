@@ -34,6 +34,12 @@
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "winmm.lib")
 
+enum _CLOCKMODE
+{
+	GEOMETRY,
+	PICTURE
+};
+
 #include "Utility.h"
 #include "CGraphics.h"
 #include "CSprite.h"

@@ -39,28 +39,39 @@ INT CGame::Render()
 
 	m_Gfx->DrawCircle(m_circleCenter.x, m_circleCenter.y, 255, 1.0f, 1.0f, 1.0f, 1.0f);
 
+	// 지오메트리 모드
+
 	m_secondPoint.x = cosf(m_secondTheta * radian)  * 150.0f;
 	m_secondPoint.y = sinf(m_secondTheta * radian)  * 150.0f;
 
 	m_minuatePoint.x = cosf(m_minuateTheta * radian) * 100.0f;
 	m_minuatePoint.y = sinf(m_minuateTheta * radian) * 100.0f;
 
+
 	m_hourPoint.x = cosf(m_hourTheta * radian) * 70.0f;
 	m_hourPoint.y = sinf(m_hourTheta * radian) * 70.0f;
 
 
+	// 초침
 	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
 		m_circleCenter.x + m_secondPoint.x, m_circleCenter.y + m_secondPoint.y, 3, 1.0f, 0.0f, 0.0f, 1.0f);
+
+	// 분침
 
 	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
 		m_circleCenter.x + m_minuatePoint.x, m_circleCenter.y + m_minuatePoint.y, 4, 0.0f, 1.0f,0.0f, 1.0f);
 
-
+	//시침
 	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
 		m_circleCenter.x + m_hourPoint.x, m_circleCenter.y + m_hourPoint.y, 6, 0.0f, 0.0f, 1.0f, 1.0f);
 
 	m_Gfx->DrawPoint(m_circleCenter.x, m_circleCenter.y,5.0f, 0.0f, 0.0f, 0.0f, 1.0f);
 
+
+	//D2D1_POINT_2F center = { m_circleCenter.x - 100.0f + (m_clockMinuate->GetSize().width / 2)
+	//,m_circleCenter.y - 100.0f + (m_clockMinuate->GetSize().height / 2) };
+	//m_clockMinuate->Draw(D2D1::Point2F(m_circleCenter.x - 100.0f, m_circleCenter.y - 100.0f),
+	//	&center, D2D1::Point2F(1.0f, 1.0f), m_minuateTheta);
 
 	m_Gfx->EndDraw();
 	return 0;
@@ -72,10 +83,16 @@ INT CGame::FrameMove(DWORD elpased)
 
 	GetLocalTime(&st);
 
+	//그림 모드
+	m_secondTheta = (st.wSecond * 6);
+	m_minuateTheta = (st.wMinute * 6);
+	m_hourTheta = (st.wHour * 30);
 
-	m_secondTheta = ((st.wSecond * 6) - 90);
-	m_minuateTheta = ((st.wMinute * 6) - 90);
-	m_hourTheta = ((st.wHour * 30) - 90);
+
+	//지오메트리 모드
+	//m_secondTheta = ((st.wSecond * 6) - 90);
+	//m_minuateTheta = ((st.wMinute * 6) - 90);
+	//m_hourTheta = ((st.wHour * 30) - 90);
 
 	return 0;
 }
