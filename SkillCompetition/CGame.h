@@ -19,6 +19,8 @@ class CGame : public CDX2DAPP
 
 	float radian;
 
+	Clock* m_clock;
+
 	
 	INT m_clockMode;
 	//CSprite* m_sprite;

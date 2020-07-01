@@ -51,7 +51,9 @@ enum _CLOCKMODE
 #include "CGameObjectManager.h"
 #include "CGameManager.h"
 #include "CDX2DAPP.h"
+#include "Clock.h"
 #include "CGame.h"
+
 
 
 #ifdef UNICODE

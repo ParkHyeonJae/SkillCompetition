@@ -145,6 +145,7 @@
     <ClInclude Include="CGameObjectManager.h" />
     <ClInclude Include="CGraphics.h" />
     <ClInclude Include="CInput.h" />
+    <ClInclude Include="Clock.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpriteManager.h" />
     <ClInclude Include="framework.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="CGameObjectManager.cpp" />
     <ClCompile Include="CGraphics.cpp" />
     <ClCompile Include="CInput.cpp" />
+    <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpriteManager.cpp" />
     <ClCompile Include="GameObject.cpp" />

@@ -26,6 +26,9 @@ INT CGame::Init()
 	m_clockspirte = new CSprite(L"../Images/clock_background.png", m_Gfx, 583, 830);
 	m_clockHour = new CSprite(L"../Images/Hour.png", m_Gfx);
 	m_clockMinuate = new CSprite(L"../Images/Minuate.png", m_Gfx);
+	m_clock = new Clock(m_Gfx, m_dScnX, m_dScnY);
+
+	m_clock->Init();
 	return 0;
 }
 
@@ -66,6 +69,8 @@ INT CGame::Render()
 		m_circleCenter.x + m_hourPoint.x, m_circleCenter.y + m_hourPoint.y, 6, 0.0f, 0.0f, 1.0f, 1.0f);
 
 	m_Gfx->DrawPoint(m_circleCenter.x, m_circleCenter.y,5.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+	
+	m_clock->Render();
 
 
 	//D2D1_POINT_2F center = { m_circleCenter.x - 100.0f + (m_clockMinuate->GetSize().width / 2)
@@ -94,11 +99,16 @@ INT CGame::FrameMove(DWORD elpased)
 	//m_minuateTheta = ((st.wMinute * 6) - 90);
 	//m_hourTheta = ((st.wHour * 30) - 90);
 
+
+	m_clock->Update();
+
 	return 0;
 }
 
 void CGame::Destroy()
 {
+	if (m_clock != NULL)
+		delete m_clock;
 }
 
 INT CGame::Control(CInput* Input)
