@@ -15,11 +15,9 @@ INT CGame::Init()
 
 	srand((unsigned int)time(0));
 
-<<<<<<< HEAD
 	m_clock = new Clock(m_Gfx, m_dScnX, m_dScnY);
 
 	m_clock->Init();
-=======
 	m_hourTheta = 0.0f;
 	m_clockCenterPoint= { (float)(m_dScnX / 2),(float)(m_dScnY / 2) };
 	m_clockEndPoint = { 0,0 };
@@ -72,19 +70,15 @@ INT CGame::Init()
 	m_bOnceGeometry[0] = TRUE;
 	m_bOnceGeometry[1] = TRUE;*/
 	
->>>>>>> 647b30dc10147e847f8e3d67a4db6109e4c19012
 	return 0;
 }
 
 INT CGame::Render()
 {
 	m_Gfx->BeginDraw();
-<<<<<<< HEAD
 	m_Gfx->ClearScreen(0.0f, 0.0f, 0.0f);
 	
 	m_clock->Render();
-=======
-	m_Gfx->ClearScreen(0.0f, 0.0f, 0.5f);
 
 
 	//m_Gfx->DrawCircle((float)(m_dScnX / 2), (float)(m_dScnY / 2), 100.0f, 1.0f, 1.0f, 1.0f, 1.0f);
@@ -167,8 +161,6 @@ INT CGame::Render()
 	//
 	//m_Gfx->DrawTextOut(L"이동: 방향키\n 회전: 마우스 방향\n 확대/축소: 마우스 좌/우 클릭", D2D1::Point2F());
 
->>>>>>> 647b30dc10147e847f8e3d67a4db6109e4c19012
-
 	m_Gfx->EndDraw();
 	return 0;
 }
@@ -178,9 +170,7 @@ INT CGame::FrameMove(DWORD elpased)
 {
 	CDX2DAPP::FrameMove(elpased);
 
-<<<<<<< HEAD
 	m_clock->Update();
-=======
 
 	static DWORD OldTimer = timeGetTime();
 	DWORD timer = timeGetTime();
@@ -236,7 +226,8 @@ INT CGame::FrameMove(DWORD elpased)
 	
 
 
-	/*m_playerCenter.x = m_PlayerPos.x + (m_sprite->GetSize().width / 2);
+	/*
+	m_playerCenter.x = m_PlayerPos.x + (m_sprite->GetSize().width / 2);
 	m_playerCenter.y = m_PlayerPos.y + (m_sprite->GetSize().height / 2);
 	m_rtPlayerBox = { (LONG)m_playerCenter.x - 120,
 		(LONG)m_playerCenter.y - 120,
@@ -262,8 +253,7 @@ INT CGame::FrameMove(DWORD elpased)
 		radius = rand() % (m_dScnX - m_dScnY) + 1;
 		m_bIsCircleCrash = FALSE;
 	}
->>>>>>> 647b30dc10147e847f8e3d67a4db6109e4c19012
-
+	*/
 	return 0;
 }
 

@@ -49,11 +49,6 @@
 #include "Clock.h"
 #include "CGame.h"
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 647b30dc10147e847f8e3d67a4db6109e4c19012
 #ifdef UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
 #else
