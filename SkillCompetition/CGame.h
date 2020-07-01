@@ -1,7 +1,22 @@
 #pragma once
 class CGame : public CDX2DAPP
 {
+<<<<<<< HEAD
 	Clock* m_clock;
+=======
+	D2D1_POINT_2F m_clockCenterPoint;
+	D2D1_POINT_2F m_clockEndPoint;
+
+	D2D1_POINT_2F m_hour;
+	D2D1_POINT_2F m_minuate;
+	D2D1_POINT_2F m_second;
+
+	float m_hourTheta;
+	float m_minuateTheta;
+	float m_secondTheta;
+
+	SYSTEMTIME st;
+>>>>>>> 647b30dc10147e847f8e3d67a4db6109e4c19012
 
 	//CSprite* m_sprite;
 	//D2D1_POINT_2F m_playerCenter;
