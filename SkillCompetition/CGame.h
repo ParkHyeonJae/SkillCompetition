@@ -10,6 +10,8 @@ class CGame : public CDX2DAPP
 	D2D1_POINT_2F m_secondPoint;
 
 	CSprite * m_clockspirte;
+	CSprite* m_clockHour;
+	CSprite* m_clockMinuate;
 
 	float m_secondTheta;
 	float m_minuateTheta;

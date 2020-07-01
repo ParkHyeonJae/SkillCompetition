@@ -106,6 +106,8 @@ void CSprite::Draw(D2D1_POINT_2F Pos, D2D1_POINT_2F *center, D2D1_POINT_2F Scale
 		1.0f,
 		D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
 		D2D1::RectF(0.0f, 0.0f, m_bmp->GetSize().width, m_bmp->GetSize().height));
+
+	m_gfx->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
 }
 
 void CSprite::Draw(D2D1_RECT_F* src, D2D1_POINT_2F pos, D2D1_POINT_2F Scale, D2D1_POINT_2F* center, float angle)

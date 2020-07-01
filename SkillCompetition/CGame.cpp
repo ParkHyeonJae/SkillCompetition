@@ -24,7 +24,8 @@ INT CGame::Init()
 	radian = PI / 180.0f;
 
 	m_clockspirte = new CSprite(L"../Images/clock_background.png", m_Gfx, 583, 830);
-
+	m_clockHour = new CSprite(L"../Images/Hour.png", m_Gfx);
+	m_clockMinuate = new CSprite(L"../Images/Minuate.png", m_Gfx);
 	return 0;
 }
 
@@ -35,6 +36,7 @@ INT CGame::Render()
 
 	m_clockspirte->Draw(D2D1::Point2F(87.5f,-50));
 
+
 	m_Gfx->DrawCircle(m_circleCenter.x, m_circleCenter.y, 255, 1.0f, 1.0f, 1.0f, 1.0f);
 
 	m_secondPoint.x = cosf(m_secondTheta * radian)  * 150.0f;
@@ -43,8 +45,9 @@ INT CGame::Render()
 	m_minuatePoint.x = cosf(m_minuateTheta * radian) * 100.0f;
 	m_minuatePoint.y = sinf(m_minuateTheta * radian) * 100.0f;
 
-	m_hourPoint.x = cosf(m_hourTheta * radian) * 50.0f;
-	m_hourPoint.y = sinf(m_hourTheta * radian) * 50.0f;
+	m_hourPoint.x = cosf(m_hourTheta * radian) * 70.0f;
+	m_hourPoint.y = sinf(m_hourTheta * radian) * 70.0f;
+
 
 	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
 		m_circleCenter.x + m_secondPoint.x, m_circleCenter.y + m_secondPoint.y, 3, 1.0f, 0.0f, 0.0f, 1.0f);
@@ -52,10 +55,12 @@ INT CGame::Render()
 	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
 		m_circleCenter.x + m_minuatePoint.x, m_circleCenter.y + m_minuatePoint.y, 4, 0.0f, 1.0f,0.0f, 1.0f);
 
+
 	m_Gfx->DrawLine(m_circleCenter.x, m_circleCenter.y,
-		m_circleCenter.x + m_hourPoint.x, m_circleCenter.y + m_hourPoint.y, 6, 0.0f, 0.0f, 0.0f, 1.0f);
+		m_circleCenter.x + m_hourPoint.x, m_circleCenter.y + m_hourPoint.y, 6, 0.0f, 0.0f, 1.0f, 1.0f);
 
 	m_Gfx->DrawPoint(m_circleCenter.x, m_circleCenter.y,5.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+
 
 	m_Gfx->EndDraw();
 	return 0;
